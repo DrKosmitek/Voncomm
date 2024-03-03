@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple CLI</title>
+    <style>
+        body {
+            font-family: 'DOSFont', monospace;
+            background-color: rgb(0, 0, 0);
+            color: rgb(168, 168, 168);
+            margin: 0;
+            padding: 0;
+            font-size: 25px;
+        }
+
+        .terminal {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .prompt {
+            margin-right: 10px;
+            color: rgb(168, 168, 168);
+        }
+
+        .input {
+            display: flex;
+            flex-grow: 1;
+            font-family: inherit;
+            color: inherit;
+            background: inherit;
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: inherit;
+            padding: 0em 0.155em;
+            width: 100%;
+        }
+
+        .log {
+            color: rgb(168, 168, 168);
+        }
+
+        .output {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .output div {
+                color: rgb(168, 168, 168);
+            }
+
+        .copyright {
+            padding-left: calc(11ch + 4px);
+            color: rgb(168, 168, 168);
+        }
+
+        .empty {
+            visibility: hidden;
+            white-space: pre;
+        }
+
+
+        @font-face {
+            font-family: 'DOSFont';
+            src: url('dos.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div id="output" style="display:none;">
+            <div class="">Voncomm(R) VC-COM(R) Version 1.00</div>
+            <div class="copyright">(C)Copyright Voncomm Corp 1994-1999</div>
+            <div class="empty"> </div> <!-- Empty line -->
+        </div>
+        <div class="input-line" id="inputLine" style="display:none;">
+            <span id="prompt" class="prompt">C:\Terminal&gt;</span>
+            <input type="text" class="input" id="input" onkeydown="handleKeyDown(event)">
+        </div>
+    </div>
+
+    <script>
+        let currentDirectory = "C:\\Terminal";
+        let fileSystem = {
+            "C:\\Terminal": ["Main.c", "testfolder"],
+            "C:\\Terminal\\testfolder": ["file1.txt", "file2.txt", "subfolder"],
+            "C:\\Terminal\\testfolder\\subfolder": ["subfile1.txt", "subfile2.txt"]
+        };
+
+        function updatePrompt() {
+            const promptElement = document.getElementById("prompt");
+            promptElement.innerText = currentDirectory + ">";
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === "Enter") {
+                const inputElement = document.getElementById("input");
+                const outputElement = document.getElementById("output");
+                const command = inputElement.value.trim();
+                inputElement.value = ""; // Clear input field
+
+                let outputText = "";
+
+                // Basic commands
+                if (command === "help") {
+                    outputText = "Available commands: <br> - help: Display available commands <br> - dir: List contents of current directory <br> - cd [directory]: Change directory <br> - cd..: Go down one directory";
+                } else if (command === "dir") {
+                    const files = fileSystem[currentDirectory];
+                    outputText = files ? files.join("<br>") : "Directory not found.";
+                } else if (command.startsWith("cd ")) {
+                    const directory = command.substring(3).trim(); // Remove "cd " and trim
+                    const oldDirectory = currentDirectory; // Save the old directory
+                    const newPath = currentDirectory + "\\" + directory;
+                    if (fileSystem[newPath]) {
+                        currentDirectory = newPath;
+                        outputText = ""; // No need to display output when changing directory
+                    } else {
+                        outputText = "Directory not found.";
+                    }
+                    // Append the new output with the old directory in the log
+                    const newOutput = document.createElement('div');
+                    newOutput.classList.add('output');
+                    newOutput.innerHTML = "<div class='log'>" + oldDirectory + "&gt; cd " + directory + "</div>";
+                    outputElement.appendChild(newOutput);
+                    updatePrompt(); // Update the prompt after changing directory
+                } else if (command === "cd..") {
+                    // Go down one directory
+                    const oldDirectory = currentDirectory; // Save the old directory
+                    currentDirectory = currentDirectory.split("\\").slice(0, -1).join("\\") || "C:\\Terminal"; // Ensure lowest is C:\Terminal
+                    outputText = ""; // No need to display output when changing directory
+                    // Append the new output with the old directory in the log
+                    const newOutput = document.createElement('div');
+                    newOutput.classList.add('output');
+                    newOutput.innerHTML = "<div class='log'>" + oldDirectory + "&gt; cd.." + "</div>";
+                    outputElement.appendChild(newOutput);
+                    updatePrompt(); // Update the prompt after changing directory
+                } else {
+                    outputText = "Command not found. Type 'help' for available commands.";
+                }
+
+                // Append the new output if there's any text
+                if (outputText !== "") {
+                    const newOutput = document.createElement('div');
+                    newOutput.classList.add('output');
+                    newOutput.innerHTML = "<div class='log'>" + currentDirectory + "&gt; " + command + "</div><div>" + outputText + "</div>";
+                    outputElement.appendChild(newOutput);
+                    outputElement.scrollTop = outputElement.scrollHeight; // Scroll to bottom
+                }
+            }
+        }
+
+        // Function to display boot messages with delays
+        function displayBootMessages(messages, index = 0) {
+            if (index >= messages.length) {
+                // All boot messages displayed, show terminal
+                const outputElement = document.getElementById("output");
+                const inputLine = document.getElementById('inputLine');
+                outputElement.style.display = ''; // Show terminal output
+                inputLine.style.display = 'flex'; // Show input line
+                updatePrompt(); // Initialize the prompt
+
+                // Clear boot messages
+                const bootMessages = document.querySelectorAll('.log.boot-message');
+                bootMessages.forEach(message => message.remove());
+
+                return;
+            }
+            const message = messages[index];
+            setTimeout(() => {
+                if (message.text !== "") { // Check if the message is not empty
+                    const bootMessage = document.createElement('div');
+                    bootMessage.classList.add('log', 'boot-message');
+                    bootMessage.innerText = message.text;
+                    document.body.appendChild(bootMessage);
+                } else {
+                    const emptyLine = document.createElement('div');
+                    emptyLine.classList.add('empty');
+                    document.body.appendChild(emptyLine);
+                }
+                displayBootMessages(messages, index + 1);
+            }, message.delay);
+        }
+
+        // Define boot messages and delays
+        const bootMessages = [
+            { text: "Voncomm Modular BIOS v1.20G", delay: 50 },
+            { text: "Copyright (C) 1994-99, Voncomm Corp", delay: 50 },
+            { text: "⠀", delay: 0 }, // Empty line
+            { text: "VCOM ACPI BIOS Revision 1002", delay: 2000 },
+            { text: "⠀", delay: 0 }, // Empty line
+            { text: "Memory Test: 512743K OK", delay: 1000 },
+            { text: "⠀", delay: 0 }, // Empty line
+            { text: "VCOMM Plug and Play BIOS Extension v1.0A", delay: 500 },
+            { text: "Initialize Plug and Play Cards...", delay: 300 },
+            { text: "PNP Init Completed", delay: 0 },
+            { text: "⠀", delay: 1500 }, // Empty line
+            { text: "Booting...", delay: 1000 },
+            { text: "⠀", delay: 1655 } // Empty line
+        ];
+
+        // Display boot messages
+        displayBootMessages(bootMessages);
+    </script>
+</body>
+</html>
