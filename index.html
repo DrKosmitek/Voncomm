@@ -4,8 +4,179 @@
 <title>Voncomm Corporation - Welcome</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="description" content="Voncomm Corporation - Networking, Operating Systems, Terminal Computing">
-<meta name="keywords" content="voncomm, moriander, iridium, rhodium, networking, terminal, operating systems">
+<meta name="keywords" content="voncomm, moriander, mtc, rhodium, networking, terminal, operating systems">
 <script language="JavaScript">
+<!--
+
+var pageTitles = {
+  'home':     'Voncomm Corporation - Welcome',
+  'about':    'Voncomm Corporation - About Us',
+  'products': 'Voncomm Corporation - Products',
+  'services': 'Voncomm Corporation - Services',
+  'support':  'Voncomm Corporation - Support',
+  'contact':  'Voncomm Corporation - Contact',
+  'news':     'Voncomm Corporation - News'
+};
+
+var underConstruction = '<p align="center"><br>'
+  + '<font face="Arial" size="4"><b>[</b></font>'
+  + '&nbsp;<font face="Arial" size="2"><b>UNDER CONSTRUCTION</b></font>&nbsp;'
+  + '<font face="Arial" size="4"><b>]</b></font>'
+  + '<br><br>'
+  + '<font face="Arial" size="2">'
+  + 'We are currently working on this section of the website.<br>'
+  + 'Please check back soon.<br><br>'
+  + 'For immediate assistance contact us at:<br>'
+  + '<a href="mailto:info@voncomm.net">info@voncomm.net</a>'
+  + '</font><br><br></p>';
+
+var pages = {
+
+'home': '<font face="Arial" size="2">'
+  + '<p><b>Welcome to Voncomm Corporation</b></p>'
+  + '<p>Voncomm Corporation has been providing reliable networking solutions, terminal computing systems,'
+  + ' and operating software since our founding in 1984. We are a privately held company dedicated to'
+  + ' building the tools that keep networks running and terminals connected.</p>'
+  + '<p>Our work is focused on three core areas: <b>terminal computers</b>, <b>operating systems</b>,'
+  + ' and <b>networking</b>. We believe in simple, stable, and well-documented systems.</p>'
+  + '<hr size="1">'
+  + '<p><b>What We Do</b></p>'
+  + '<ul>'
+  + '<li>Terminal workstations and management hardware</li>'
+  + '<li>In-house operating system development</li>'
+  + '<li>Office desktop computers for professional environments</li>'
+  + '<li>Network consulting and infrastructure support</li>'
+  + '<li>On-site installation and maintenance</li>'
+  + '</ul>'
+  + '<hr size="1">'
+  + '<p><b>Company News</b></p>'
+  + '<p><font color="#336699"><b>March 2001</b></font><br>'
+  + 'Moriander 3.1.2 maintenance patch is now available. Customers with active support contracts'
+  + ' may contact us to receive the update.</p>'
+  + '<p><font color="#336699"><b>January 2001</b></font><br>'
+  + 'Our offices will be closed January 1st in observance of the New Year. Normal business hours'
+  + ' resume January 2nd.</p>'
+  + '<p><font color="#336699"><b>October 2000</b></font><br>'
+  + 'The Rhodium desktop computer is now available for order. It is intended for office and'
+  + ' workstation use. Contact our sales department for pricing.</p>'
+  + '</font>',
+
+'about': '<font face="Arial" size="2">'
+  + '<p><b>About Voncomm Corporation</b></p>'
+  + '<p>Voncomm Corporation was founded in 1984 by a small group of engineers who wanted to build'
+  + ' dependable, no-nonsense computing tools for businesses that relied on networked terminals.'
+  + ' We started with a single product line and have grown slowly and deliberately ever since.</p>'
+  + '<p>We are not a large company. We have a modest staff, a small number of offices, and we intend'
+  + ' to keep it that way. Our focus has always been on doing a few things well rather than many'
+  + ' things poorly.</p>'
+  + '<hr size="1">'
+  + '<p><b>Our History</b></p>'
+  + '<p><font color="#336699"><b>1984</b></font> &mdash; Voncomm is founded. Early work focuses on'
+  + ' networking hardware and terminal infrastructure for small businesses.</p>'
+  + '<p><font color="#336699"><b>1988</b></font> &mdash; Development begins on Moriander, our'
+  + ' in-house operating system for terminal servers and networked hardware.</p>'
+  + '<p><font color="#336699"><b>1993</b></font> &mdash; Moriander 1.0 ships with the first'
+  + ' Voncomm terminal hardware unit.</p>'
+  + '<p><font color="#336699"><b>1996</b></font> &mdash; The MTC (Management Terminal Computer)'
+  + ' is introduced. It becomes our main hardware product.</p>'
+  + '<p><font color="#336699"><b>1999</b></font> &mdash; Moriander 3.0 released. Improved'
+  + ' stability and expanded hardware support.</p>'
+  + '<p><font color="#336699"><b>2000</b></font> &mdash; Rhodium office desktop introduced.'
+  + ' Moriander 3.1 released. MTC-2 enters production.</p>'
+  + '<hr size="1">'
+  + '<p><b>Our Philosophy</b></p>'
+  + '<p>We write software that we would want to use ourselves. We document everything. We do not'
+  + ' drop support for hardware without giving customers adequate notice. We answer the phone.</p>'
+  + '<p>Voncomm is not publicly traded and has no outside investors. Decisions are made by the people'
+  + ' who work here.</p>'
+  + '<hr size="1">'
+  + '<p><b>Staff</b></p>'
+  + '<p>Voncomm currently employs 34 full-time staff across engineering, operations, and customer'
+  + ' support. We also work with a small number of contractors on a per-project basis.</p>'
+  + '</font>',
+
+'products': '<font face="Arial" size="2">'
+  + '<p><b>Products</b></p>'
+  + '<p>Voncomm develops and sells a small number of core products. We do not have a large catalogue.'
+  + ' Everything listed here is actively maintained.</p>'
+  + '<hr size="1">'
+
+  + '<p><b>Moriander</b> &nbsp;<font color="#888888"><i>Operating System</i></font></p>'
+  + '<p>Moriander is the Voncomm operating system, developed in-house since 1988. It is a lightweight,'
+  + ' text-based OS designed for terminal servers, networked workstations, and embedded network hardware.'
+  + ' Moriander is not a general-purpose desktop operating system. It is built to be stable,'
+  + ' predictable, and straightforward to administer over a serial or network connection.</p>'
+  + '<p>Current release: <b>Moriander 3.1</b> &nbsp;(December 2000)<br>'
+  + 'Previous release: Moriander 3.0 &nbsp;(March 1999)<br>'
+  + 'Extended support: Moriander 2.x until Q4 2002</p>'
+  + '<p>Moriander runs on Voncomm hardware and select third-party x86 systems. A hardware'
+  + ' compatibility list is available from our support department.</p>'
+  + '<hr size="1">'
+
+  + '<p><b>MTC &mdash; Management Terminal Computer</b> &nbsp;<font color="#888888"><i>Hardware</i></font></p>'
+  + '<p>The MTC is Voncomm\'s primary hardware product. It is a compact terminal computer intended'
+  + ' for network administration, system monitoring, and managed terminal access. The MTC ships'
+  + ' with Moriander pre-installed and is sold as a complete unit.</p>'
+  + '<p>It is not a desktop replacement. It is designed to sit in a rack or on a shelf and run'
+  + ' unattended. The current model is the <b>MTC-2</b>, introduced in late 2000.</p>'
+  + '<table border="1" cellpadding="4" cellspacing="0" width="100%">'
+  + '<tr bgcolor="#336699"><td><font face="Arial" size="2" color="#ffffff"><b>Specification</b></font></td>'
+  + '<td><font face="Arial" size="2" color="#ffffff"><b>MTC-2</b></font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">Processor</font></td><td><font face="Arial" size="2">486 DX2 / 66 MHz</font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">Memory</font></td><td><font face="Arial" size="2">32 MB RAM</font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">Storage</font></td><td><font face="Arial" size="2">256 MB flash</font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">Network</font></td><td><font face="Arial" size="2">10/100 Ethernet (x2)</font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">Serial ports</font></td><td><font face="Arial" size="2">4x RS-232</font></td></tr>'
+  + '<tr><td><font face="Arial" size="2">OS</font></td><td><font face="Arial" size="2">Moriander 3.1 (included)</font></td></tr>'
+  + '</table>'
+  + '<p>The previous model, MTC-1 (1996&ndash;1999), is no longer sold but remains supported.</p>'
+  + '<hr size="1">'
+
+  + '<p><b>Rhodium</b> &nbsp;<font color="#888888"><i>Office Desktop Computer</i></font></p>'
+  + '<p>Rhodium is a desktop computer intended for office and professional workstation use. It is not'
+  + ' marketed for home use. Rhodium runs standard x86-compatible software and ships without an'
+  + ' operating system, though Moriander can be installed on it. It is sold as a reliable, no-frills'
+  + ' machine for offices that need dependable hardware without unnecessary extras.</p>'
+  + '<p>Available configurations and pricing are provided on request.</p>'
+  + '<hr size="1">'
+
+  + '<p><b>Software Utilities</b></p>'
+  + '<p>Voncomm distributes a small set of command-line utilities. Most ship with Moriander or are'
+  + ' available separately.</p>'
+  + '<ul>'
+  + '<li><b>vcping</b> &mdash; Network diagnostic and latency testing tool</li>'
+  + '<li><b>vcterm</b> &mdash; Serial and network terminal emulator</li>'
+  + '<li><b>vclog</b> &mdash; System event logger and log rotation utility</li>'
+  + '<li><b>netmap</b> &mdash; Simple LAN topology scanner</li>'
+  + '</ul>'
+  + '<p>These utilities are available to customers with an active support contract.'
+  + ' Contact us for access.</p>'
+  + '<hr size="1">'
+  + '<p><font color="#888888">For pricing and ordering information, contact'
+  + ' <a href="mailto:sales@voncomm.net">sales@voncomm.net</a>.</font></p>'
+  + '</font>',
+
+'services': '<font face="Arial" size="2"><p><b>Services</b></p></font><hr size="1">'
+  + underConstruction,
+
+'support': '<font face="Arial" size="2"><p><b>Support</b></p></font><hr size="1">'
+  + underConstruction,
+
+'contact': '<font face="Arial" size="2"><p><b>Contact</b></p></font><hr size="1">'
+  + underConstruction,
+
+'news': '<font face="Arial" size="2"><p><b>News</b></p></font><hr size="1">'
+  + underConstruction
+
+};
+
+function showPage(id) {
+  document.getElementById('maincontent').innerHTML = pages[id];
+  document.title = pageTitles[id];
+  return false;
+}
+
+//-->
 </script>
 </head>
 <body bgcolor="#c0c0c0" text="#000000" link="#0000cc" vlink="#551a8b" alink="#ff0000">
@@ -24,6 +195,7 @@
 <table width="600" border="0" cellpadding="6" cellspacing="2" align="center">
 <tr valign="top">
 
+  <!-- Left nav -->
   <td width="130" bgcolor="#336699">
     <font face="Arial" size="2" color="#ffffff"><b>Navigation</b></font><br>
     <br>
@@ -44,6 +216,7 @@
     </font>
   </td>
 
+  <!-- Main content -->
   <td width="470" bgcolor="#ffffff" valign="top">
     <div id="maincontent">
     <font face="Arial" size="2">
@@ -57,7 +230,7 @@
     </p>
 
     <p>
-    Our work is focused on three core areas: <b>Rhodium workstations</b>, <b>Moriander OS</b>,
+    Our work is focused on three core areas: <b>terminal computers</b>, <b>operating systems</b>,
     and <b>networking</b>. We believe in simple, stable, and well-documented systems.
     </p>
 
@@ -66,9 +239,9 @@
     <p><b>What We Do</b></p>
 
     <ul>
-      <li><font face="Arial" size="2">Rhodium desktop computers and professional hardware</font></li>
-      <li><font face="Arial" size="2">Moriander operating system development and licensing</font></li>
-      <li><font face="Arial" size="2">Legacy support for Iridium terminal systems</font></li>
+      <li><font face="Arial" size="2">Terminal workstations and management hardware</font></li>
+      <li><font face="Arial" size="2">In-house operating system development</font></li>
+      <li><font face="Arial" size="2">Office desktop computers for professional environments</font></li>
       <li><font face="Arial" size="2">Network consulting and infrastructure support</font></li>
       <li><font face="Arial" size="2">On-site installation and maintenance</font></li>
     </ul>
@@ -79,7 +252,7 @@
 
     <p>
     <font color="#336699"><b>March 2001</b></font><br>
-    Moriander 3.1.2 maintenance patch is now available for Rhodium systems. Customers with active support contracts
+    Moriander 3.1.2 maintenance patch is now available. Customers with active support contracts
     may contact us to receive the update.
     </p>
 
