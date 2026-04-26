@@ -15,7 +15,8 @@ var pageTitles = {
   'services': 'Voncomm Corporation - Services',
   'support':  'Voncomm Corporation - Support',
   'contact':  'Voncomm Corporation - Contact',
-  'news':     'Voncomm Corporation - News'
+  'news':     'Voncomm Corporation - News',
+  'photos':   'Voncomm Corporation - Gallery'
 };
 
 var underConstruction = '<p align="center"><br>'
@@ -159,7 +160,24 @@ var pages = {
   + underConstruction,
 
 'news': '<font face="Arial" size="2"><p><b>News</b></p></font><hr size="1">'
-  + underConstruction
+  + underConstruction,
+
+'photos': '<font face="Arial" size="2">'
+  + '<p><b>Gallery</b></p>'
+  + '<p>A look inside the Voncomm Corporation offices.</p>'
+  + '<hr size="1">'
+  + '<p align="center"><font color="#888888"><i>Photo 1</i></font><br>'
+  + '<img src="Gallery/1.png" alt="Photo 1" style="max-width:440px;width:100%;border:1px solid #aaaaaa;" onerror="this.outerHTML=\'<table width=440 cellpadding=0 cellspacing=0 align=center style=&quot;border:1px solid #aaaaaa;&quot;><tr><td bgcolor=#eeeeee align=center style=&quot;padding:30px 20px;&quot;><font face=Arial size=2 color=#888888><b>[ Content Missing ]</b><br><br>Photo 1 is not available.</font></td></tr></table>\'"></p>'
+  + '<hr size="1">'
+  + '<p align="center"><font color="#888888"><i>Photo 2</i></font><br>'
+  + '<img src="Gallery/2.png" alt="Photo 2" style="max-width:440px;width:100%;border:1px solid #aaaaaa;" onerror="this.outerHTML=\'<table width=440 cellpadding=0 cellspacing=0 align=center style=&quot;border:1px solid #aaaaaa;&quot;><tr><td bgcolor=#eeeeee align=center style=&quot;padding:30px 20px;&quot;><font face=Arial size=2 color=#888888><b>[ Content Missing ]</b><br><br>Photo 2 is not available.</font></td></tr></table>\'"></p>'
+  + '<hr size="1">'
+  + '<p align="center"><font color="#888888"><i>Photo 3</i></font><br>'
+  + '<img src="Gallery/3.png" alt="Photo 3" style="max-width:440px;width:100%;border:1px solid #aaaaaa;" onerror="this.outerHTML=\'<table width=440 cellpadding=0 cellspacing=0 align=center style=&quot;border:1px solid #aaaaaa;&quot;><tr><td bgcolor=#eeeeee align=center style=&quot;padding:30px 20px;&quot;><font face=Arial size=2 color=#888888><b>[ Content Missing ]</b><br><br>Photo 3 is not available.</font></td></tr></table>\'"></p>'
+  + '<hr size="1">'
+  + '<p align="center"><font color="#888888"><i>Photo 4</i></font><br>'
+  + '<img src="Gallery/4.png" alt="Photo 4" style="max-width:440px;width:100%;border:1px solid #aaaaaa;" onerror="this.outerHTML=\'<table width=440 cellpadding=0 cellspacing=0 align=center style=&quot;border:1px solid #aaaaaa;&quot;><tr><td bgcolor=#eeeeee align=center style=&quot;padding:30px 20px;&quot;><font face=Arial size=2 color=#888888><b>[ Content Missing ]</b><br><br>Photo 4 is not available.</font></td></tr></table>\'"></p>'
+  + '</font>'
 
 };
 
@@ -201,6 +219,8 @@ html { overflow-y: scroll; }
     <a href="#" onclick="return showPage('about')" style="color:#ffffff;">About Us</a><br>
     <br>
     <a href="#" onclick="return showPage('products')" style="color:#ffffff;">Products</a><br>
+    <br>
+    <a href="#" onclick="return showPage('photos')" style="color:#ffffff;">Gallery</a><br>
     <br>
     <a href="#" onclick="return showPage('services')" style="color:#ffffff;">Services</a><br>
     <br>
